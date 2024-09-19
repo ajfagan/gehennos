@@ -73,7 +73,7 @@
 	    home-manager.useUserPackages = true;
 	    home-manager.users = forEachUser buildUserHome;
 	  }
-	  ({users.users = forEachUser (user: { isNormalUser = true; extraGroups = [ user ]; } );})
+	  ({users.users = forEachUser (user: { isNormalUser = true; extraGroups = [ user ]; initialPassword = "temp123"; } );})
 	];
       };
     };
