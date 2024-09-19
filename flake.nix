@@ -34,7 +34,7 @@
     forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
 
-    users = [ "aj" "guest" ];
+    users = [ "aj" "guest" "warren" ];
     forEachUser = val: builtins.listToAttrs ( builtins.map( user: { name = user; value = val user; }) users );
     buildUserHome = user: 
     let
@@ -73,7 +73,7 @@
 	    home-manager.useUserPackages = true;
 	    home-manager.users = forEachUser buildUserHome;
 	  }
-	  ({users.users = forEachUser (user: { isNormalUser = true; extraGroups = [ user ]; password = "temp123"; } );})
+	  ({users.users = forEachUser (user: { isNormalUser = true; extraGroups = [ user ]; initialPassword = "temp123"; } );})
 	];
       };
     };
