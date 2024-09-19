@@ -5,7 +5,7 @@
 , username 
 }:
 let
-  packages = import ./packages.nix { inherit pkgs; };
+  #packages = import ./packages.nix { inherit pkgs; };
 in {
   home = {
     inherit homeDirectory stateVersion username;
@@ -23,7 +23,7 @@ in {
     };
   };
 
-  programs = import ./programs.nix { inherit pkgs homeDirectory; };
+  #programs = import ./programs.nix { inherit pkgs homeDirectory; };
   wayland.windowManager.hyprland.enable = false;
   wayland.windowManager.hyprland.settings = {};
 }
