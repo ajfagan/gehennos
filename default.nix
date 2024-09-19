@@ -1,6 +1,14 @@
-{ home-manager, nixpkgs, ...}:
+{ home-manager, nixpkgs, pkgs, ...}:
 let
 in {
+  
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
   #services.xserver.enable = true;
   #services.displayManager.sddm.enable = true;
   #services.displayManager.sddm.wayland.enable = true;
